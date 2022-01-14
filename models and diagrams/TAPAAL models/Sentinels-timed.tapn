@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <shared-transition name="AssignArea" player="0" urgent="false"/>
+  <shared-transition name="ShareInformation" player="0" urgent="false"/>
+  <shared-transition name="UpdateOldFIeldInformation" player="0" urgent="false"/>
+  <net active="true" id="Sentinel" type="P/T net">
+    <place displayName="true" id="P0" initialMarking="1" invariant="&lt; inf" name="P0" nameOffsetX="0" nameOffsetY="0" positionX="181" positionY="58"/>
+    <place displayName="true" id="AreaReceived" initialMarking="0" invariant="&lt; inf" name="AreaReceived" nameOffsetX="36" nameOffsetY="-11" positionX="421" positionY="58"/>
+    <place displayName="true" id="AreaFound" initialMarking="0" invariant="&lt;= 3" name="AreaFound" nameOffsetX="51" nameOffsetY="-22" positionX="631" positionY="58"/>
+    <place displayName="true" id="AllTyleAnalized" initialMarking="0" invariant="&lt; inf" name="AllTyleAnalized" nameOffsetX="103" nameOffsetY="-7" positionX="757" positionY="264"/>
+    <place displayName="true" id="InfoShared" initialMarking="0" invariant="&lt; inf" name="InfoShared" nameOffsetX="42" nameOffsetY="-17" positionX="571" positionY="479"/>
+    <place displayName="true" id="PictureTaken" initialMarking="0" invariant="&lt; inf" name="PictureTaken" nameOffsetX="-4" nameOffsetY="13" positionX="468" positionY="223"/>
+    <place displayName="true" id="ElementsRecognized" initialMarking="0" invariant="&lt; inf" name="ElementsRecognized" nameOffsetX="-2" nameOffsetY="7" positionX="468" positionY="292"/>
+    <place displayName="true" id="InfoStored" initialMarking="0" invariant="&lt; inf" name="InfoStored" nameOffsetX="-3" nameOffsetY="16" positionX="466" positionY="354"/>
+    <place displayName="true" id="InformationAssembled" initialMarking="0" invariant="&lt; inf" name="InformationAssembled" nameOffsetX="0" nameOffsetY="0" positionX="781" positionY="479"/>
+    <place displayName="true" id="StartReached" initialMarking="0" invariant="&lt; inf" name="StartReached" nameOffsetX="0" nameOffsetY="0" positionX="181" positionY="479"/>
+    <place displayName="true" id="ReturningToStart" initialMarking="0" invariant="&lt; inf" name="ReturningToStart" nameOffsetX="56" nameOffsetY="-12" positionX="406" positionY="479"/>
+    <transition angle="0" displayName="true" id="AssignArea" infiniteServer="false" name="AssignArea" nameOffsetX="50" nameOffsetY="-13" player="0" positionX="301" positionY="58" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="CheckArea" infiniteServer="false" name="CheckArea" nameOffsetX="44" nameOffsetY="-12" player="0" positionX="525" positionY="58" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="NavigateTowardsArea" infiniteServer="false" name="NavigateTowardsArea" nameOffsetX="58" nameOffsetY="43" player="0" positionX="525" positionY="134" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="DivideFieldIntoTiles" infiniteServer="false" name="DivideFieldIntoTiles" nameOffsetX="57" nameOffsetY="-7" player="0" positionX="781" positionY="58" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="RecognizeElements" infiniteServer="false" name="RecognizeElements" nameOffsetX="128" nameOffsetY="10" player="0" positionX="525" positionY="265" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="StoreInfo" infiniteServer="false" name="StoreInfo" nameOffsetX="70" nameOffsetY="14" player="0" positionX="525" positionY="322" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="MoveToTheNextTile" infiniteServer="false" name="MoveToTheNextTile" nameOffsetX="131" nameOffsetY="19" player="0" positionX="525" positionY="382" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="TakePicture" infiniteServer="false" name="TakePicture" nameOffsetX="67" nameOffsetY="-8" player="0" positionX="657" positionY="221" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="AssembleInformation" infiniteServer="false" name="AssembleInformation" nameOffsetX="55" nameOffsetY="38" player="0" positionX="783" positionY="364" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ShareInformation" infiniteServer="false" name="ShareInformation" nameOffsetX="55" nameOffsetY="42" player="0" positionX="676" positionY="479" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ReturnToStart" infiniteServer="false" name="ReturnToStart" nameOffsetX="46" nameOffsetY="41" player="0" positionX="481" positionY="479" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="UpdateOldFIeldInformation" infiniteServer="false" name="UpdateOldFIeldInformation" nameOffsetX="64" nameOffsetY="-14" player="0" positionX="181" positionY="374" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T0" infiniteServer="false" name="T0" nameOffsetX="22" nameOffsetY="42" player="0" positionX="301" positionY="479" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="P0" target="AssignArea" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="211" yCoord="73"/>
+      <arcpath arcPointType="false" id="1" xCoord="310" yCoord="73"/>
+    </arc>
+    <arc id="A1" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AssignArea" target="AreaReceived" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="320" yCoord="73"/>
+      <arcpath arcPointType="false" id="1" xCoord="421" yCoord="73"/>
+    </arc>
+    <arc id="A2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AreaReceived" target="CheckArea" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="451" yCoord="73"/>
+      <arcpath arcPointType="false" id="1" xCoord="534" yCoord="73"/>
+    </arc>
+    <arc id="A3" inscription="1" nameOffsetX="0" nameOffsetY="0" source="CheckArea" target="AreaFound" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="544" yCoord="73"/>
+      <arcpath arcPointType="false" id="1" xCoord="631" yCoord="73"/>
+    </arc>
+    <arc id="A4" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="AreaFound" target="NavigateTowardsArea" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="640" yCoord="87"/>
+      <arcpath arcPointType="false" id="1" xCoord="621" yCoord="139"/>
+      <arcpath arcPointType="false" id="2" xCoord="544" yCoord="149"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="NavigateTowardsArea" target="AreaReceived" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="534" yCoord="149"/>
+      <arcpath arcPointType="false" id="1" xCoord="466" yCoord="142"/>
+      <arcpath arcPointType="false" id="2" xCoord="441" yCoord="86"/>
+    </arc>
+    <arc id="A6" inscription="[1,inf)" nameOffsetX="0" nameOffsetY="0" source="AreaFound" target="DivideFieldIntoTiles" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="661" yCoord="73"/>
+      <arcpath arcPointType="false" id="1" xCoord="790" yCoord="73"/>
+    </arc>
+    <arc id="A7" inscription="1" nameOffsetX="0" nameOffsetY="0" source="DivideFieldIntoTiles" target="AllTyleAnalized" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="796" yCoord="88"/>
+      <arcpath arcPointType="false" id="1" xCoord="773" yCoord="264"/>
+    </arc>
+    <arc id="A8" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="PictureTaken" target="RecognizeElements" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="494" yCoord="247"/>
+      <arcpath arcPointType="false" id="1" xCoord="535" yCoord="275"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="RecognizeElements" target="ElementsRecognized" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="534" yCoord="285"/>
+      <arcpath arcPointType="false" id="1" xCoord="496" yCoord="301"/>
+    </arc>
+    <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ElementsRecognized" target="StoreInfo" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="495" yCoord="314"/>
+      <arcpath arcPointType="false" id="1" xCoord="535" yCoord="332"/>
+    </arc>
+    <arc id="A11" inscription="1" nameOffsetX="0" nameOffsetY="0" source="StoreInfo" target="InfoStored" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="534" yCoord="342"/>
+      <arcpath arcPointType="false" id="1" xCoord="494" yCoord="362"/>
+    </arc>
+    <arc id="A12" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InfoStored" target="MoveToTheNextTile" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="494" yCoord="376"/>
+      <arcpath arcPointType="false" id="1" xCoord="534" yCoord="397"/>
+    </arc>
+    <arc id="A13" inscription="[0,inf)" nameOffsetX="7" nameOffsetY="-15" source="AllTyleAnalized" target="TakePicture" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="758" yCoord="272"/>
+      <arcpath arcPointType="false" id="1" xCoord="676" yCoord="236"/>
+    </arc>
+    <arc id="A14" inscription="1" nameOffsetX="0" nameOffsetY="0" source="TakePicture" target="PictureTaken" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="666" yCoord="236"/>
+      <arcpath arcPointType="false" id="1" xCoord="497" yCoord="237"/>
+    </arc>
+    <arc id="A15" inscription="[5,inf)" nameOffsetX="0" nameOffsetY="0" source="AllTyleAnalized" target="AssembleInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="776" yCoord="293"/>
+      <arcpath arcPointType="false" id="1" xCoord="798" yCoord="364"/>
+    </arc>
+    <arc id="A17" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MoveToTheNextTile" target="AllTyleAnalized" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="544" yCoord="397"/>
+      <arcpath arcPointType="false" id="1" xCoord="758" yCoord="285"/>
+    </arc>
+    <arc id="A18" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AssembleInformation" target="InformationAssembled" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="798" yCoord="394"/>
+      <arcpath arcPointType="false" id="1" xCoord="796" yCoord="479"/>
+    </arc>
+    <arc id="A19" inscription="[1,inf)" nameOffsetX="0" nameOffsetY="0" source="InformationAssembled" target="ShareInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="781" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="695" yCoord="494"/>
+    </arc>
+    <arc id="A20" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ShareInformation" target="InfoShared" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="685" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="601" yCoord="494"/>
+    </arc>
+    <arc id="A21" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InfoShared" target="ReturnToStart" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="571" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="500" yCoord="494"/>
+    </arc>
+    <arc id="A23" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="StartReached" target="UpdateOldFIeldInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="196" yCoord="479"/>
+      <arcpath arcPointType="false" id="1" xCoord="196" yCoord="404"/>
+    </arc>
+    <arc id="A24" inscription="1" nameOffsetX="0" nameOffsetY="0" source="UpdateOldFIeldInformation" target="P0" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="196" yCoord="374"/>
+      <arcpath arcPointType="false" id="1" xCoord="196" yCoord="88"/>
+    </arc>
+    <arc id="A25" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ReturnToStart" target="ReturningToStart" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="490" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="436" yCoord="494"/>
+    </arc>
+    <arc id="A26" inscription="[3,inf)" nameOffsetX="0" nameOffsetY="0" source="ReturningToStart" target="T0" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="406" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="320" yCoord="494"/>
+    </arc>
+    <arc id="A27" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T0" target="StartReached" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="310" yCoord="494"/>
+      <arcpath arcPointType="false" id="1" xCoord="211" yCoord="494"/>
+    </arc>
+  </net>
+  <net active="true" id="ControlRoom" type="P/T net">
+    <place displayName="true" id="Start" initialMarking="1" invariant="&lt; inf" name="Start" nameOffsetX="0" nameOffsetY="0" positionX="135" positionY="182"/>
+    <place displayName="true" id="DeterminedArea" initialMarking="0" invariant="&lt; inf" name="DeterminedArea" nameOffsetX="41" nameOffsetY="-17" positionX="328" positionY="182"/>
+    <place displayName="true" id="Wait" initialMarking="0" invariant="&lt;= 10" name="Wait" nameOffsetX="0" nameOffsetY="0" positionX="585" positionY="182"/>
+    <place displayName="true" id="InformationReceived" initialMarking="0" invariant="&lt; inf" name="InformationReceived" nameOffsetX="0" nameOffsetY="0" positionX="585" positionY="318"/>
+    <place displayName="true" id="InformationStored" initialMarking="0" invariant="&lt; inf" name="InformationStored" nameOffsetX="63" nameOffsetY="-4" positionX="285" positionY="318"/>
+    <transition angle="0" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="0" nameOffsetY="0" player="0" positionX="238" positionY="182" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="AssignArea" infiniteServer="false" name="AssignArea" nameOffsetX="50" nameOffsetY="-14" player="0" positionX="448" positionY="182" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ShareInformation" infiniteServer="false" name="ShareInformation" nameOffsetX="100" nameOffsetY="-12" player="0" positionX="675" positionY="242" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="StoreInformation" infiniteServer="false" name="StoreInformation" nameOffsetX="50" nameOffsetY="52" player="0" positionX="418" positionY="318" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="UpdateOldFIeldInformation" infiniteServer="false" name="UpdateOldFIeldInformation" nameOffsetX="85" nameOffsetY="43" player="0" positionX="135" positionY="318" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Start" target="T2" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="165" yCoord="197"/>
+      <arcpath arcPointType="false" id="1" xCoord="248" yCoord="198"/>
+    </arc>
+    <arc id="A1" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T2" target="DeterminedArea" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="258" yCoord="197"/>
+      <arcpath arcPointType="false" id="1" xCoord="328" yCoord="197"/>
+    </arc>
+    <arc id="A2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="DeterminedArea" target="AssignArea" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="358" yCoord="197"/>
+      <arcpath arcPointType="false" id="1" xCoord="458" yCoord="198"/>
+    </arc>
+    <arc id="A3" inscription="1" nameOffsetX="0" nameOffsetY="0" source="AssignArea" target="Wait" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="468" yCoord="197"/>
+      <arcpath arcPointType="false" id="1" xCoord="585" yCoord="197"/>
+    </arc>
+    <arc id="A4" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Wait" target="ShareInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="612" yCoord="206"/>
+      <arcpath arcPointType="false" id="1" xCoord="685" yCoord="258"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ShareInformation" target="InformationReceived" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="685" yCoord="262"/>
+      <arcpath arcPointType="false" id="1" xCoord="612" yCoord="324"/>
+    </arc>
+    <arc id="A6" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InformationReceived" target="StoreInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="585" yCoord="334"/>
+      <arcpath arcPointType="false" id="1" xCoord="438" yCoord="334"/>
+    </arc>
+    <arc id="A7" inscription="1" nameOffsetX="0" nameOffsetY="0" source="StoreInformation" target="InformationStored" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="428" yCoord="334"/>
+      <arcpath arcPointType="false" id="1" xCoord="315" yCoord="334"/>
+    </arc>
+    <arc id="A8" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="InformationStored" target="UpdateOldFIeldInformation" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="285" yCoord="334"/>
+      <arcpath arcPointType="false" id="1" xCoord="155" yCoord="334"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="UpdateOldFIeldInformation" target="Start" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="151" yCoord="318"/>
+      <arcpath arcPointType="false" id="1" xCoord="151" yCoord="212"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="false" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="No deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="true" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="Sentinel&lt;10" overApproximation="true" pTrie="true" query="AG Sentinel.InformationAssembled &lt;= 10" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="AUTOMATIC" gcd="true" hashTableSize="MB_16" inclusionPlaces="*NONE*" name="Common room wait less than 6" overApproximation="true" pTrie="true" query="AG ControlRoom.Wait &lt;= 6" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <k-bound bound="3"/>
+  <feature isGame="false" isTimed="true"/>
+</pnml>

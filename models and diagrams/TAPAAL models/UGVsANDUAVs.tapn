@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.informatik.hu-berlin.de/top/pnml/ptNetb">
+  <shared-place initialMarking="0" invariant="&lt; inf" name="UAVSent"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="SendUGVs"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="ErrorUAVsWeed"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="WeedParasitesFound"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="ErrorFromParasites"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="ErrorUAVsParasites"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="CheckParasites"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="CheckWeed"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="CheckPrecisely"/>
+  <shared-place initialMarking="0" invariant="&lt; inf" name="ControlRoomUpdated"/>
+  <shared-transition name="Error" player="0" urgent="false"/>
+  <net active="true" id="ControlRoom" type="P/T net">
+    <place displayName="true" id="Start" initialMarking="1" invariant="&lt; inf" name="Start" nameOffsetX="0" nameOffsetY="0" positionX="226" positionY="149"/>
+    <place displayName="true" id="UAVSent" initialMarking="0" invariant="&lt; inf" name="UAVSent" nameOffsetX="27" nameOffsetY="-12" positionX="507" positionY="153"/>
+    <place displayName="true" id="ProcessError" initialMarking="0" invariant="&lt; inf" name="ProcessError" nameOffsetX="0" nameOffsetY="0" positionX="517" positionY="224"/>
+    <place displayName="true" id="SendUGVs" initialMarking="0" invariant="&lt; inf" name="SendUGVs" nameOffsetX="0" nameOffsetY="0" positionX="829" positionY="227"/>
+    <place displayName="true" id="WeedParasitesFound" initialMarking="0" invariant="&lt; inf" name="WeedParasitesFound" nameOffsetX="0" nameOffsetY="0" positionX="205" positionY="412"/>
+    <place displayName="true" id="ErrorUAVsWeed" initialMarking="0" invariant="&lt; inf" name="ErrorUAVsWeed" nameOffsetX="0" nameOffsetY="0" positionX="216" positionY="299"/>
+    <place displayName="true" id="ErrorUAVsParasites" initialMarking="0" invariant="&lt; inf" name="ErrorUAVsParasites" nameOffsetX="0" nameOffsetY="0" positionX="211" positionY="240"/>
+    <place displayName="true" id="CheckParasites" initialMarking="0" invariant="&lt; inf" name="CheckParasites" nameOffsetX="-21" nameOffsetY="1" positionX="440" positionY="269"/>
+    <place displayName="true" id="CheckWeed" initialMarking="0" invariant="&lt; inf" name="CheckWeed" nameOffsetX="-30" nameOffsetY="16" positionX="459" positionY="357"/>
+    <place displayName="true" id="CheckPrecisely" initialMarking="0" invariant="&lt; inf" name="CheckPrecisely" nameOffsetX="0" nameOffsetY="0" positionX="517" positionY="473"/>
+    <place displayName="true" id="ControlRoomUpdated" initialMarking="0" invariant="&lt; inf" name="ControlRoomUpdated" nameOffsetX="0" nameOffsetY="0" positionX="81" positionY="22"/>
+    <transition angle="0" displayName="true" id="SendUAVs" infiniteServer="false" name="SendUAVs" nameOffsetX="0" nameOffsetY="0" player="0" positionX="378" positionY="153" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ErrorFromUAVs" infiniteServer="false" name="ErrorFromUAVs" nameOffsetX="0" nameOffsetY="0" player="0" positionX="379" positionY="221" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T3" infiniteServer="false" name="T3" nameOffsetX="0" nameOffsetY="0" player="0" positionX="680" positionY="221" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ShareInformationtoUGVs" infiniteServer="false" name="ShareInformationtoUGVs" nameOffsetX="0" nameOffsetY="0" player="0" positionX="389" positionY="411" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T6" infiniteServer="false" name="T6" nameOffsetX="0" nameOffsetY="0" player="0" positionX="362" positionY="298" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T7" infiniteServer="false" name="T7" nameOffsetX="0" nameOffsetY="0" player="0" positionX="141" positionY="85" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="Start" target="SendUAVs" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="255" yCoord="163"/>
+      <arcpath arcPointType="false" id="1" xCoord="388" yCoord="163"/>
+    </arc>
+    <arc id="A1" inscription="1" nameOffsetX="0" nameOffsetY="0" source="SendUAVs" target="UAVSent" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="397" yCoord="168"/>
+      <arcpath arcPointType="false" id="1" xCoord="507" yCoord="168"/>
+    </arc>
+    <arc id="A5" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ErrorFromUAVs" target="ProcessError" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="398" yCoord="241"/>
+      <arcpath arcPointType="false" id="1" xCoord="517" yCoord="239"/>
+    </arc>
+    <arc id="A6" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ProcessError" target="T3" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="546" yCoord="238"/>
+      <arcpath arcPointType="false" id="1" xCoord="598" yCoord="236"/>
+      <arcpath arcPointType="false" id="2" xCoord="689" yCoord="236"/>
+    </arc>
+    <arc id="A7" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T3" target="SendUGVs" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="699" yCoord="241"/>
+      <arcpath arcPointType="false" id="1" xCoord="829" yCoord="241"/>
+    </arc>
+    <arc id="A8" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WeedParasitesFound" target="ShareInformationtoUGVs" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="234" yCoord="427"/>
+      <arcpath arcPointType="false" id="1" xCoord="398" yCoord="431"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ShareInformationtoUGVs" target="SendUGVs" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="408" yCoord="426"/>
+      <arcpath arcPointType="false" id="1" xCoord="796" yCoord="349"/>
+      <arcpath arcPointType="false" id="2" xCoord="837" yCoord="255"/>
+    </arc>
+    <arc id="A10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ErrorUAVsParasites" target="ErrorFromUAVs" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="240" yCoord="253"/>
+      <arcpath arcPointType="false" id="1" xCoord="388" yCoord="244"/>
+    </arc>
+    <arc id="A11" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ErrorFromUAVs" target="CheckParasites" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="398" yCoord="241"/>
+      <arcpath arcPointType="false" id="1" xCoord="443" yCoord="274"/>
+    </arc>
+    <arc id="A12" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ErrorUAVsWeed" target="T6" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="245" yCoord="314"/>
+      <arcpath arcPointType="false" id="1" xCoord="371" yCoord="318"/>
+    </arc>
+    <arc id="A13" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T6" target="CheckWeed" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="381" yCoord="313"/>
+      <arcpath arcPointType="false" id="1" xCoord="461" yCoord="363"/>
+    </arc>
+    <arc id="A14" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T6" target="ProcessError" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="381" yCoord="313"/>
+      <arcpath arcPointType="false" id="1" xCoord="516" yCoord="316"/>
+      <arcpath arcPointType="false" id="2" xCoord="528" yCoord="253"/>
+    </arc>
+    <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="ShareInformationtoUGVs" target="CheckPrecisely" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="408" yCoord="426"/>
+      <arcpath arcPointType="false" id="1" xCoord="518" yCoord="481"/>
+    </arc>
+    <arc id="A16" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ControlRoomUpdated" target="T7" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="105" yCoord="48"/>
+      <arcpath arcPointType="false" id="1" xCoord="150" yCoord="105"/>
+    </arc>
+    <arc id="A17" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T7" target="Start" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="160" yCoord="100"/>
+      <arcpath arcPointType="false" id="1" xCoord="229" yCoord="154"/>
+    </arc>
+  </net>
+  <net active="true" id="UAV" type="P/T net">
+    <place displayName="true" id="UAVSent" initialMarking="0" invariant="&lt; inf" name="UAVSent" nameOffsetX="0" nameOffsetY="0" positionX="158" positionY="116"/>
+    <place displayName="true" id="AreaScanned" initialMarking="0" invariant="&lt; inf" name="AreaScanned" nameOffsetX="0" nameOffsetY="0" positionX="414" positionY="122"/>
+    <place displayName="true" id="SearchWeed" initialMarking="0" invariant="&lt; inf" name="SearchWeed" nameOffsetX="0" nameOffsetY="0" positionX="724" positionY="120"/>
+    <place displayName="true" id="SearchParasites" initialMarking="0" invariant="&lt; inf" name="SearchParasites" nameOffsetX="0" nameOffsetY="0" positionX="1010" positionY="111"/>
+    <place displayName="true" id="ErrorUAVsWeed" initialMarking="0" invariant="&lt; inf" name="ErrorUAVsWeed" nameOffsetX="0" nameOffsetY="0" positionX="653" positionY="298"/>
+    <place displayName="true" id="WeedParasitesFound" initialMarking="0" invariant="&lt; inf" name="WeedParasitesFound" nameOffsetX="0" nameOffsetY="0" positionX="933" positionY="347"/>
+    <place displayName="true" id="ErrorUAVsParasites" initialMarking="0" invariant="&lt; inf" name="ErrorUAVsParasites" nameOffsetX="0" nameOffsetY="0" positionX="876" positionY="278"/>
+    <transition angle="0" displayName="true" id="ScanArea" infiniteServer="false" name="ScanArea" nameOffsetX="0" nameOffsetY="0" player="0" positionX="295" positionY="123" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T2" infiniteServer="false" name="T2" nameOffsetX="0" nameOffsetY="0" player="0" positionX="587" positionY="120" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T3" infiniteServer="false" name="T3" nameOffsetX="0" nameOffsetY="0" player="0" positionX="841" positionY="110" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="WeedError" infiniteServer="false" name="WeedError" nameOffsetX="0" nameOffsetY="0" player="0" positionX="729" positionY="212" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="ErrorParasites" infiniteServer="false" name="ErrorParasites" nameOffsetX="0" nameOffsetY="0" player="0" positionX="940" positionY="208" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T7" infiniteServer="false" name="T7" nameOffsetX="0" nameOffsetY="0" player="0" positionX="1076" positionY="225" priority="0" urgent="false"/>
+    <arc id="A1" inscription="[2,inf):1" nameOffsetX="0" nameOffsetY="0" source="ScanArea" target="AreaScanned" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="314" yCoord="143"/>
+      <arcpath arcPointType="false" id="1" xCoord="414" yCoord="137"/>
+    </arc>
+    <arc id="A3" inscription="[2,inf):1" nameOffsetX="0" nameOffsetY="0" source="UAVSent" target="ScanArea" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="187" yCoord="130"/>
+      <arcpath arcPointType="false" id="1" xCoord="305" yCoord="129"/>
+    </arc>
+    <arc id="A2" inscription="[4,inf):1" nameOffsetX="0" nameOffsetY="0" source="T2" target="SearchWeed" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="606" yCoord="135"/>
+      <arcpath arcPointType="false" id="1" xCoord="724" yCoord="135"/>
+    </arc>
+    <arc id="A4" inscription="[4,inf):1" nameOffsetX="0" nameOffsetY="0" source="AreaScanned" target="T2" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="443" yCoord="136"/>
+      <arcpath arcPointType="false" id="1" xCoord="597" yCoord="132"/>
+    </arc>
+    <arc id="A5" inscription="[0,5]:1" nameOffsetX="0" nameOffsetY="0" source="T3" target="SearchParasites" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="860" yCoord="125"/>
+      <arcpath arcPointType="false" id="1" xCoord="1010" yCoord="125"/>
+    </arc>
+    <arc id="A6" inscription="[0,5]:1" nameOffsetX="0" nameOffsetY="0" source="SearchWeed" target="T3" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="753" yCoord="134"/>
+      <arcpath arcPointType="false" id="1" xCoord="850" yCoord="133"/>
+    </arc>
+    <arc id="A7" inscription="[6,inf):1" nameOffsetX="0" nameOffsetY="0" source="WeedError" target="ErrorUAVsWeed" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="738" yCoord="227"/>
+      <arcpath arcPointType="false" id="1" xCoord="677" yCoord="301"/>
+    </arc>
+    <arc id="A8" inscription="[6,inf):1" nameOffsetX="0" nameOffsetY="0" source="SearchWeed" target="WeedError" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="739" yCoord="149"/>
+      <arcpath arcPointType="false" id="1" xCoord="744" yCoord="212"/>
+    </arc>
+    <arc id="A11" inscription="[7,inf):1" nameOffsetX="0" nameOffsetY="0" source="T7" target="WeedParasitesFound" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1085" yCoord="240"/>
+      <arcpath arcPointType="false" id="1" xCoord="1037" yCoord="271"/>
+      <arcpath arcPointType="false" id="2" xCoord="958" yCoord="351"/>
+    </arc>
+    <arc id="A12" inscription="[7,inf):1" nameOffsetX="1" nameOffsetY="-22" source="SearchParasites" target="T7" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1039" yCoord="130"/>
+      <arcpath arcPointType="false" id="1" xCoord="1190" yCoord="176"/>
+      <arcpath arcPointType="false" id="2" xCoord="1178" yCoord="243"/>
+      <arcpath arcPointType="false" id="3" xCoord="1095" yCoord="245"/>
+    </arc>
+    <arc id="A10" inscription="[8,inf):1" nameOffsetX="0" nameOffsetY="0" source="ErrorParasites" target="ErrorUAVsParasites" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="949" yCoord="223"/>
+      <arcpath arcPointType="false" id="1" xCoord="900" yCoord="281"/>
+    </arc>
+    <arc id="A13" inscription="[8,inf):1" nameOffsetX="0" nameOffsetY="0" source="SearchParasites" target="ErrorParasites" type="transport" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="1016" yCoord="138"/>
+      <arcpath arcPointType="false" id="1" xCoord="960" yCoord="220"/>
+    </arc>
+  </net>
+  <net active="true" id="UGV" type="P/T net">
+    <place displayName="true" id="SendUGVs" initialMarking="0" invariant="&lt; inf" name="SendUGVs" nameOffsetX="0" nameOffsetY="0" positionX="92" positionY="226"/>
+    <place displayName="true" id="CheckWeed" initialMarking="0" invariant="&lt; inf" name="CheckWeed" nameOffsetX="0" nameOffsetY="0" positionX="245" positionY="413"/>
+    <place displayName="true" id="CheckParasites" initialMarking="0" invariant="&lt; inf" name="CheckParasites" nameOffsetX="0" nameOffsetY="0" positionX="256" positionY="114"/>
+    <place displayName="true" id="CheckPrecisely" initialMarking="0" invariant="&lt; inf" name="CheckPrecisely" nameOffsetX="0" nameOffsetY="0" positionX="221" positionY="322"/>
+    <place displayName="true" id="ParasiteFound" initialMarking="0" invariant="&lt; inf" name="ParasiteFound" nameOffsetX="0" nameOffsetY="0" positionX="569" positionY="358"/>
+    <place displayName="true" id="ControlFinished" initialMarking="0" invariant="&lt; inf" name="ControlFinished" nameOffsetX="0" nameOffsetY="0" positionX="551" positionY="247"/>
+    <place displayName="true" id="WeedFound" initialMarking="0" invariant="&lt; inf" name="WeedFound" nameOffsetX="0" nameOffsetY="0" positionX="533" positionY="155"/>
+    <place displayName="true" id="ControlRoomUpdated" initialMarking="0" invariant="&lt; inf" name="ControlRoomUpdated" nameOffsetX="0" nameOffsetY="0" positionX="839" positionY="231"/>
+    <transition angle="0" displayName="true" id="CheckForWeedSpecifically" infiniteServer="false" name="CheckForWeedSpecifically" nameOffsetX="37" nameOffsetY="-36" player="0" positionX="409" positionY="178" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="CheckForParasiteSpecifically" infiniteServer="false" name="CheckForParasiteSpecifically" nameOffsetX="6" nameOffsetY="-11" player="0" positionX="407" positionY="340" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="MorePreciseControl" infiniteServer="false" name="MorePreciseControl" nameOffsetX="0" nameOffsetY="0" player="0" positionX="411" positionY="252" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T5" infiniteServer="false" name="T5" nameOffsetX="0" nameOffsetY="0" player="0" positionX="612" positionY="157" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T6" infiniteServer="false" name="T6" nameOffsetX="0" nameOffsetY="0" player="0" positionX="622" positionY="255" priority="0" urgent="false"/>
+    <transition angle="0" displayName="true" id="T7" infiniteServer="false" name="T7" nameOffsetX="0" nameOffsetY="0" player="0" positionX="624" positionY="341" priority="0" urgent="false"/>
+    <arc id="A0" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="SendUGVs" target="CheckForWeedSpecifically" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="121" yCoord="238"/>
+      <arcpath arcPointType="false" id="1" xCoord="419" yCoord="190"/>
+    </arc>
+    <arc id="A2" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="SendUGVs" target="CheckForParasiteSpecifically" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="121" yCoord="246"/>
+      <arcpath arcPointType="false" id="1" xCoord="416" yCoord="355"/>
+    </arc>
+    <arc id="I3" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckWeed" target="CheckForParasiteSpecifically" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="273" yCoord="422"/>
+      <arcpath arcPointType="false" id="1" xCoord="416" yCoord="364"/>
+    </arc>
+    <arc id="I4" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckParasites" target="CheckForWeedSpecifically" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="285" yCoord="134"/>
+      <arcpath arcPointType="false" id="1" xCoord="419" yCoord="184"/>
+    </arc>
+    <arc id="I6" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckPrecisely" target="CheckForParasiteSpecifically" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="250" yCoord="338"/>
+      <arcpath arcPointType="false" id="1" xCoord="416" yCoord="361"/>
+    </arc>
+    <arc id="I7" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckPrecisely" target="CheckForWeedSpecifically" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="247" yCoord="327"/>
+      <arcpath arcPointType="false" id="1" xCoord="418" yCoord="199"/>
+    </arc>
+    <arc id="A8" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="SendUGVs" target="MorePreciseControl" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="121" yCoord="242"/>
+      <arcpath arcPointType="false" id="1" xCoord="420" yCoord="267"/>
+    </arc>
+    <arc id="I10" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckWeed" target="MorePreciseControl" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="270" yCoord="417"/>
+      <arcpath arcPointType="false" id="1" xCoord="420" yCoord="276"/>
+    </arc>
+    <arc id="I11" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckParasites" target="MorePreciseControl" type="tapnInhibitor" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="282" yCoord="138"/>
+      <arcpath arcPointType="false" id="1" xCoord="421" yCoord="258"/>
+    </arc>
+    <arc id="A9" inscription="1" nameOffsetX="0" nameOffsetY="0" source="CheckForWeedSpecifically" target="WeedFound" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="428" yCoord="193"/>
+      <arcpath arcPointType="false" id="1" xCoord="533" yCoord="172"/>
+    </arc>
+    <arc id="A10" inscription="1" nameOffsetX="0" nameOffsetY="0" source="MorePreciseControl" target="ControlFinished" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="430" yCoord="267"/>
+      <arcpath arcPointType="false" id="1" xCoord="551" yCoord="262"/>
+    </arc>
+    <arc id="A11" inscription="1" nameOffsetX="0" nameOffsetY="0" source="CheckForParasiteSpecifically" target="ParasiteFound" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="426" yCoord="355"/>
+      <arcpath arcPointType="false" id="1" xCoord="569" yCoord="371"/>
+    </arc>
+    <arc id="A12" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="WeedFound" target="T5" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="562" yCoord="169"/>
+      <arcpath arcPointType="false" id="1" xCoord="622" yCoord="167"/>
+    </arc>
+    <arc id="A13" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T5" target="ControlRoomUpdated" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="631" yCoord="172"/>
+      <arcpath arcPointType="false" id="1" xCoord="839" yCoord="241"/>
+    </arc>
+    <arc id="A14" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ControlFinished" target="T6" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="580" yCoord="262"/>
+      <arcpath arcPointType="false" id="1" xCoord="632" yCoord="265"/>
+    </arc>
+    <arc id="A15" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T6" target="ControlRoomUpdated" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="641" yCoord="270"/>
+      <arcpath arcPointType="false" id="1" xCoord="839" yCoord="247"/>
+    </arc>
+    <arc id="A16" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="ParasiteFound" target="T7" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="597" yCoord="366"/>
+      <arcpath arcPointType="false" id="1" xCoord="634" yCoord="351"/>
+    </arc>
+    <arc id="A17" inscription="1" nameOffsetX="0" nameOffsetY="0" source="T7" target="ControlRoomUpdated" type="normal" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="643" yCoord="356"/>
+      <arcpath arcPointType="false" id="1" xCoord="840" yCoord="252"/>
+    </arc>
+    <arc id="A18" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckPrecisely" target="MorePreciseControl" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="250" yCoord="331"/>
+      <arcpath arcPointType="false" id="1" xCoord="420" yCoord="270"/>
+    </arc>
+    <arc id="A19" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckWeed" target="CheckForWeedSpecifically" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="268" yCoord="415"/>
+      <arcpath arcPointType="false" id="1" xCoord="418" yCoord="202"/>
+    </arc>
+    <arc id="A20" inscription="[0,inf)" nameOffsetX="0" nameOffsetY="0" source="CheckParasites" target="CheckForParasiteSpecifically" type="timed" weight="1">
+      <arcpath arcPointType="false" id="0" xCoord="279" yCoord="141"/>
+      <arcpath arcPointType="false" id="1" xCoord="417" yCoord="346"/>
+    </arc>
+  </net>
+  <query active="true" approximationDenominator="2" capacity="4" discreteInclusion="false" enableOverApproximation="false" enableUnderApproximation="false" extrapolationOption="null" gcd="false" hashTableSize="null" inclusionPlaces="*NONE*" name="No Deadlock" overApproximation="false" pTrie="true" query="AG !(deadlock)" reduction="true" reductionOption="VerifyTAPNdiscreteVerification" searchOption="HEURISTIC" symmetry="true" timeDarts="false" traceOption="NONE" useStubbornReduction="true" useTarOption="false"/>
+  <k-bound bound="3"/>
+  <feature isGame="false" isTimed="true"/>
+</pnml>
