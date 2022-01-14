@@ -1,2 +1,2 @@
 # Autonomous-Systems-B-Lab-Group-1
-gg have fun
+complete collection of the relevant files for submission
